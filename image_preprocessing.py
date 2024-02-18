@@ -34,7 +34,7 @@ def image_preprocessing(img):
     cv2.imwrite("temp/gray.jpg", gray_image)
 
     # binary image
-    thresh, im_bw = cv2.threshold(gray_image, 100, 255, cv2.THRESH_BINARY)
+    thresh, im_bw = cv2.threshold(gray_image, 127, 255, cv2.THRESH_BINARY)
     cv2.imwrite("temp/bw_image.jpg", im_bw)
 
     # noise removal
