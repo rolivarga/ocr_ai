@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Képfeltöltés és Szöveg Generálás</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Képfeltöltés</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="file">
+            <button type="submit">Feltöltés</button>
+        </form>
+        <div id="result"></div>
+        
+        <h2>Feltöltött Képek</h2>
+        <div id="uploadedImages">
+            {% for file in files %}
+                <div class="image">
+                    <img src="{{ url_for('uploaded_file', filename=file) }}" alt="{{ file }}">
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Szöveg Generálás</h2>
+        <button id="generateButton">Generálás</button>
+        <div id="generatedText"></div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
