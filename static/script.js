@@ -17,13 +17,10 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         const uploadedImages = document.getElementById('uploadedImages');
         const newImage = document.createElement('div');
         newImage.classList.add('image');
-        newImage.innerHTML = `<img src="/${result.file_path.replace(/\\/g, '/')}" alt="${result.file_path}">`;
+        newImage.innerHTML = `<img src="/uploads/${fileInput.files[0].name}" alt="${fileInput.files[0].name}">`;
         uploadedImages.appendChild(newImage);
+        
+        // Reset the file input
+        fileInput.value = '';
     }
-});
-
-document.getElementById('generateButton').addEventListener('click', async function() {
-    const response = await fetch('/generate');
-    const result = await response.json();
-    document.getElementById('generatedText').innerText = result.text;
 });
